@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Preview files with lf
+
+# Five arguments are passed to this file from lf - the current file name, and
+# the width, height, horizontal position, and vertical position of the preview
+# pane. SIGPIPE is sent when enough lines are read.
+FILE="$1"  # file path
+W="$2"  # width of preview pane
+H="$3"  # height of preview pane
+X="$4"  # horizontal position of preview pane
+Y="$5"  # vertical position of preview pane
+
+# Get some information about the file
+EXT="echo ${FILE##*.} | tr '[:upper:]' '[:lower:]'"
+MIMETYPE="$(file --dereference --brief --mime-type -- "$1")"
+
+case "$MIMETYPE" in
+  text/*) bat "$1" ;;
+  application/pdf) pdftotext -l 10 -nopgbrk -q -- "$FILE" - | fmt -w $W ;;
+  application/*opendocument*) odt2txt "$FILE" ;;
+  application/gzip|application/zip) bsdtar --list --file "$FILE" ;;
+  *)
+    echo "No preview for $MIMETYPE"
+    echo
+    exiftool "$FILE"
+    ;;
+esac
+exit 1

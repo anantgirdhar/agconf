@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Document config
+export RMGR_ROOT="$HOME/docs/clarence/db"
+export DOCS="$RMGR_ROOT/docs"
+export READ_DIRS="$RMGR_ROOT/readdirs"
+
+# Notes config
+export NOTES="$RMGR_ROOT/notes"
+export SUMMARIES="$NOTES/summaries"
+# export TEMPLATES="$NOTES/templates"
+# export EXTENSION="md"
+
+# Database files
+export DB="$RMGR_ROOT/reflist.yaml"
+
+# If you don't have highlight installed, just set these options to cat
+export HIGHLIGHT_YAML="highlight --syntax=yaml --out-format=truecolor"
+export HIGHLIGHT_BIBTEX="highlight --syntax=bibtex --out-format=truecolor"
+
+# Programs to use - set these here if you don't have them set elsewhere
+# export EDITOR="vim"
+# export PAGER="less"
+# export READER="zathura"

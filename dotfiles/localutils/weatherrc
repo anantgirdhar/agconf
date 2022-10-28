@@ -1,0 +1,14 @@
+# localutils: weather.gov config
+
+# Cache files
+CACHEDIR=$XDG_CACHE_HOME/localutils
+HOURLY_CACHE=$CACHEDIR/weather.hourly
+DAILY_CACHE=$CACHEDIR/weather.daily
+GRIDDATA_CACHE=$CACHEDIR/weather.griddata
+URL_CACHE=$CACHEDIR/weather.urls
+
+# Update frequencies (seconds)
+UPDATE_HOURLY=3600  # 1 hour
+UPDATE_DAILY=14400  # 4 hours
+UPDATE_GRIDDATA=14400  # 4 hours
+

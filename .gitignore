@@ -1,0 +1,10 @@
+*~
+dotfiles/X11/.Xauthority
+dotfiles/npm/_cacache/
+dotfiles/npm/_logs/
+dotfiles/npm/*.json
+dotfiles/vim/.netrwhist
+dotfiles/qutebrowser/autoconfig.yml
+dotfiles/qutebrowser/bookmarks
+dotfiles/qutebrowser/quickmarks
+dotfiles/ipython/*

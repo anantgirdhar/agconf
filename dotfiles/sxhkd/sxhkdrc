@@ -1,0 +1,51 @@
+# programs
+super + r
+	$TERMINAL -e $FILE
+super + p
+	$TERMINAL -e htop
+super + w
+	$BROWSER
+super + shift + w ; {q,f,b,o}
+	{qutebrowser,firefox,brave,open_quick_link}
+super + c
+	$TERMINAL -e calcurse
+
+# utilities
+super + {_,shift + } F2
+	$HOME/bin/{pmount,unmount}
+super + F4
+	$HOME/bin/multimonitor
+
+#TODO: Change this back to using a keycode instead of a keysym
+super + F8
+	$HOME/bin/setkbmap && pkill -RTMIN+3 dwmblocks
+
+# screenshots
+super + Print
+	$HOME/bin/screenshot
+Print
+	$HOME/bin/screenshot "window"
+shift + Print
+	$HOME/bin/screenshot "window copy"
+control + Print
+	$HOME/bin/screenshot "selection"
+control + shift + Print
+	$HOME/bin/screenshot "selection copy"
+
+# audio
+super + m
+	volume_control mute_toggle && pkill -RTMIN+1 dwmblocks
+super + {period,comma}
+	volume_control {up,down} 4 && pkill -RTMIN+1 dwmblocks
+super + shift + {period,comma}
+	volume_control {up,down} 1 && pkill -RTMIN+1 dwmblocks
+
+# screen
+XF86MonBrightness{Down,Up}
+	xbacklight -{dec,inc} 2
+shift + {F2,F3}
+	xbacklight -set {5,100}
+
+#TODO: Add system lock, halt, restart, etc
+super + shift + x ; {l,h,r}
+	{i3lock -c 000000,shutdown -h now,shutdown -r now}

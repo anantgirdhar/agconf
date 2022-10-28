@@ -1,0 +1,68 @@
+#
+# ~/.bashrc
+#
+
+echo "Running .bashrc"
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+set -o vi
+
+BLUE="\\[\e[0;34m\\]"
+WHITE="\\[\e[0;37m\\]"
+CYAN="\\[\e[0;36m\\]"
+YELLOW="\\[\e[0;33m\\]"
+GREEN="\\[\e[0;32m\\]"
+NORMAL="\\[\e[0;0m\\]"
+PS1="${NORMAL}[ ${GREEN}\u ${NORMAL}|${CYAN} \W ${NORMAL}] ${WHITE}$ "
+#PS1='\[\e[0;37m[\e[m \[\e[32m\u\] | \[\e[36m\W\] \[\e[33m\]\[\e[1m\] \[\e[0;37m]\e[m $ \[\e[0m\]'
+
+# Change where history is stored
+export HISTFILE=$XDG_DATA_HOME/bash_history
+
+# Don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+# Append to the history file; don't overwrite it.
+shopt -s histappend
+
+# Set history size.
+HISTSIZE=-1
+HISTFILESIZE=-1
+
+# Only scroll through commands with same prefix in history
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+alias ls='ls --color=auto'
+#PS1='[\u@\h \W]\$ '
+
+# Set variables for a cleaner home directory
+export ALIASES_FILE=$XDG_CONFIG_HOME/sh/aliases
+export SHRC=$HOME/.bashrc
+
+[ -f "$ALIASES_FILE" ] && source "$ALIASES_FILE"
+
+## cantera specific items
+#if [ -z $LD_LIBRARY_PATH]; then
+#    LD_LIBRARY_PATH=/usr/local/lib
+#else
+#    LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#fi
+#export LD_LIBRARY_PATH
+#if [ -z $PKG_CONFIG_PATH ]; then
+#    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+#else
+#    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#fi
+#export PKG_CONFIG_PATH
+#PYTHON_CMD=/usr/bin/python
+#export PYTHON_CMD
+#if [ -z $PYTHONPATH ]; then
+#    PYTHONPATH=/usr/local/lib/python3.7/site-packages
+#else
+#    PYTHONPATH=/usr/local/lib/python3.7.site-packages:$PYTHONPATH
+#fi
+#export PYTHONPATH
+

@@ -1,0 +1,122 @@
+# Quick commands
+alias x='exit'
+alias c='clear'
+alias l='ls -CF --color=auto'
+alias ll='ls -Alh --color=auto'
+alias lt='ls -rAlth --color=auto'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+alias .......='cd ../../../../../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias .6='cd ../../../../../../'
+alias md='mkdir'
+alias grep='grep --color=auto'
+alias grepr='grep --color=auto -r'
+alias grepi='grep --color=auto -i'
+alias grepir='grep --color=auto -i -r'
+alias cp='cp --preserve=all'
+alias scp='noglob scp -p'
+alias pacman='pacman --color=auto'
+alias diff='diff --color=auto'
+alias w='watch --interval=1 -d'
+
+# System config files
+alias val='vim $ALIASES_FILE'
+alias sal='source $ALIASES_FILE'
+alias vr='vim $SHRC'
+alias sr='source $SHRC'
+alias vrc='vim $XDG_CONFIG_HOME/vim/vimrc'
+LOCAL_ALIASES=$XDG_CONFIG_HOME/sh/local_aliases
+LOCAL_BOOKMARKS=$XDG_CONFIG_HOME/sh/local_bookmarks
+LOCAL_COMMANDS=$XDG_CONFIG_HOME/sh/local_commands
+alias vloc='vim $LOCAL_COMMANDS'
+alias sloc='source $LOCAL_COMMANDS'
+if [ -f "$LOCAL_ALIASES" ]; then
+    source "$LOCAL_ALIASES"
+fi
+if [ -f "$LOCAL_BOOKMARKS" ]; then
+    source "$LOCAL_BOOKMARKS"
+fi
+if [ -f "$LOCAL_COMMANDS" ]; then
+    source "$LOCAL_COMMANDS"
+fi
+
+alias se=". $AGSCRIPTS/script_edit"
+alias ce=". $AGSCRIPTS/config_edit"
+alias devgo=". $AGSCRIPTS/dev_edit cd"
+alias devedit=". $AGSCRIPTS/dev_edit edit"
+
+# Git
+alias g='git status'
+gb() {
+    # Ensure that this is a git repository before continuing
+    git rev-parse || return 128
+    # If no arguments, just show all branches
+    [ -z "$1" ] && git branch -a && return 0
+    # Given a branch name, check if there is a local branch
+    localBranch=$(git branch | grep -io "$1")
+    [ ! -z "$localBranch" ] && git checkout "$localBranch" && return 0
+    # If no local branch, check if the first remote has a branch
+    remote=$(git remote | head -n 1)
+    remoteBranch=$(git ls-remote "$remote" | grep -io "$1")
+    [ ! -z "$remoteBranch" ] && git checkout "$remoteBranch" && return 0
+    # Otherwise, just create a new branch
+    git checkout -b "$1" && return 0
+}
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gap='git add -p'
+alias gc='git commit'
+
+# Django
+alias rs='python manage.py runserver'
+alias ds='python manage.py shell'
+
+# Utilities
+alias cclip='tr -d "\n" | xclip -selection clipboard'
+alias gify='convert -delay 15 -loop 0'
+alias crop_top='convert -crop +0+25'
+alias open='gnome-open'
+alias reswap='sudo swapoff -a && sudo swapon -a'
+ccat() {
+  if [ -z "$2" ]; then
+    cat "$1" | column -t -s, | less -S
+  else
+    cat "$1" | column -t -s "$2" | less -S
+  fi
+}
+
+# Softwares
+alias v='vim'
+alias vi='vim'
+alias visit='/usr/local/visit/bin/visit &'
+alias tec='/usr/local/tecplot/360ex_2017r2/bin/tec360 &'
+alias tecb='/usr/local/tecplot/360ex_2017r2/bin/tec360 -b -p'
+alias octave='octave-cli'
+alias python='python3'
+alias setup_cantera='source /usr/local/bin/setup_cantera'
+alias tensorboard='python $(pip show tensorboard | grep "Location: " | cut -d ":" -f 2 | tr -d " ")/tensorboard/main.py'
+alias nbx='jupyter nbconvert --execute --to notebook --inplace'
+alias abook='abook --config $XDG_CONFIG_HOME/abook/abookrc'
+alias units='units --history $XDG_CACHE_HOME/units_history'
+
+# Access external systems
+alias gryphon='ssh -Y gryphon'
+alias tux='ssh -Y tux'
+alias tunnel_skua='ssh -nNT -L35009:skua:22 agirdhar@tux.ae.gatech.edu &'
+alias tunnel_palmchat='ssh -nNT -L35011:palmchat:22 agirdhar@tux.ae.gatech.edu &'
+alias mansion_proxy='ssh -C2TnN -D 8080 agirdhar@tux.gatech.edu'
+alias skua='ssh -Y skua'
+alias palmchat='ssh -Y palmchat'
+alias rx='ssh -Y rx'
+alias bridges='ssh -X bridges'
+alias pacef='ssh -X pacef'
+alias kshell='/usr/local/krb5/bin/kshell'
+alias kinit='/usr/local/krb5/bin/kinit -f -V -A anantg@ORS.HPC.MIL'
+alias copper='ssh -Y anantg@copper01.ORS.HPC.MIL'
+

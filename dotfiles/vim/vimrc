@@ -1,0 +1,5 @@
+source $HOME/.config/vim/config/paths.vim
+source $HOME/.config/vim/config/basic.vim
+source $HOME/.config/vim/config/plugins.vim
+source $HOME/.config/vim/config/spell.vim
+source $HOME/.config/vim/config/mappings.vim

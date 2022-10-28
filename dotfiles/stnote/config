@@ -1,0 +1,4 @@
+#!/bin/sh
+NOTES_DIR="$HOME/docs/stnotes"
+USE_TEMPLATE="all"
+EXTENSION="md"

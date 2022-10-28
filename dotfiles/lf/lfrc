@@ -1,0 +1,53 @@
+# Basic variables
+set ifs "\n"
+set shellopts '-eu'
+
+# Configuration
+set drawbox off
+set hiddenfiles ".*:*.aux:*.log:*.out"
+set incsearch on
+set mouse on
+set number
+set period 1
+set previewer '~/.config/lf/scope'
+# set cleaner ''
+set relativenumber
+
+cmd open ${{
+  case $(echo "$f") in
+    *.xlsx) setsid -f localc $f ;;
+  esac
+  case $(file --mime-type "$(readlink -f $f)" -b) in
+    application/pdf) setsid -f zathura $fx > /dev/null 2>&1 ;;
+    video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+    audio/*) mpv --audio-display=no $f ;;
+    text/csv) localc $f ;;
+    application/vnd.oasis.opendocument.spreadsheet) localc $f ;;
+    image/*) sxiv $f ;;
+  esac
+}}
+
+cmd delete ${{
+  clear; tput cup $(($(tput lines)/3)); tput bold
+  set -f
+  printf "%s\n\t" "$fx"
+  printf "delete? [y/N]"
+  read ans
+  [ $ans = "y" ] && rm $fx
+}}
+
+#TODO: Add icons
+
+# Mappings
+map [ push hkl
+map ] push hjl
+map <m-down> down
+map <m-up> up
+
+map D delete
+
+map V push :!vim<space>
+
+map A rename
+# map a rename before extension
+map r

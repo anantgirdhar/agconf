@@ -1,0 +1,14 @@
+[[ -f "$XRESOURCES_FILE" ]] && xrdb "$XRESOURCES_FILE"
+
+feh --no-fehbg --bg-scale $HOME/pics/wallpaper.jpg &
+compton &
+dunst &
+setxkbmap -option caps:swapescape &
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+    sxhkd &
+    dwmblocks &
+    exec dwm
+elif [ "$(tty)" = "/dev/tty2" ]; then
+    exec i3
+fi

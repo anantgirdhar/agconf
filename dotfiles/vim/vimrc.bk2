@@ -1,0 +1,402 @@
+" Keep the home directory clean
+:set undodir=$XDG_DATA_HOME/vim/undo
+:set directory=$XDG_DATA_HOME/vim/swap
+:set backupdir=$XDG_DATA_HOME/vim/backup
+:set viminfo+=n$XDG_DATA_HOME/vim/viminfo
+:set runtimepath=$XDG_DATA_HOME/vim,$VIMRUNTIME,$XDG_DATA_HOME/vim/after
+:let snippetsdir = $XDG_CONFIG_HOME . "/vim/snippets"
+:let spelldir = $XDG_DATA_HOME . "/vim/spell"
+
+" Plugins
+" To install, run :PlugInstall (after reloading .vimrc)
+" To update, run :PlugUpdate
+" To remove plugins, run :PlugClean
+" But before loading plugged, install it if it's not already present
+if empty(glob('$XDG_DATA_HOME/vim/autoload/plug.vim'))
+  silent !curl -fLo $XDG_DATA_HOME/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+  " --sync | source $MYVIMRC
+endif
+call plug#begin('$XDG_DATA_HOME/vim/plugged')
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'preservim/nerdtree'
+Plug 'haya14busa/is.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'dyng/ctrlsf.vim'
+"Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale', {'for': 'python'}
+Plug 'ap/vim-css-color'
+Plug 'kovetskiy/sxhkd-vim'
+"Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/goyo.vim'
+"Plug 'dhruvasagar/vim-table-mode'
+call plug#end()
+
+au InsertEnter * set noignorecase
+au InsertLeave * set ignorecase
+
+:set showcmd
+:set number relativenumber
+:set autoindent
+:set tabstop=4
+:set softtabstop=4
+:set shiftwidth=4
+:set expandtab
+:set tabpagemax=100
+:set timeoutlen=1000
+:colorscheme zellner
+:set background=dark
+:set ignorecase
+":set smartcase
+:set incsearch
+:set wildmode=longest,list,full
+
+:syntax enable
+" Global spellfile
+":set spellfile=g:spelldir . "en.utf-8.add"
+:execute ":set spellfile=" . g:spelldir . "/en.utf-8.add"
+:execute ":set spellfile+=" . g:spelldir . "/programming.utf-8.add"
+:execute ":set spellfile+=" . g:spelldir . "/research.utf-8.add"
+:execute ":set spellfile+=" . g:spelldir . "/resabbrev.utf-8.add"
+
+" Disallow comments from continuing on new lines
+:set formatoptions-=r
+:set formatoptions-=o
+autocmd FileType * set formatoptions-=r
+autocmd FileType * set formatoptions-=o
+
+" Make splits easier to work with
+:set splitbelow
+:set splitright
+:nnoremap <C-h> <C-w><C-h>
+:nnoremap <C-j> <C-w><C-j>
+:nnoremap <C-k> <C-w><C-k>
+:nnoremap <C-l> <C-w><C-l>
+:inoremap <C-h> <Esc><C-w><C-h>
+:inoremap <C-j> <Esc><C-w><C-j>
+:inoremap <C-k> <Esc><C-w><C-k>
+:inoremap <C-l> <Esc><C-w><C-l>
+" :nnoremap <Right> <C-w>t<C-w>H
+" :nnoremap <Down> <C-w>t<C-w>K
+:noremap <Up> :resize +2<CR>
+:noremap <Down> :resize -2<CR>
+:noremap <Left> :vertical resize -2<CR>
+:noremap <Right> :vertical resize +2<CR>
+
+" Scroll by screen line instead of file line
+":nnoremap j gj
+":nnoremap k gk
+
+"" Move lines and selections around
+""TODO: Figure out better keys to map these to
+":nnoremap <Down> :m .+1<CR>==
+":nnoremap <Up> :m .-2<CR>==
+":inoremap <Down> <Esc>:m .+1<CR>==gi
+":inoremap <Up> <Esc>:m .-2<CR>==gi
+":vnoremap <Down> :m '>+1<CR>gv=gv
+":vnoremap <Up> :m '<-2<CR>gv=gv
+
+" Swap the goto mark behavior
+:nnoremap ' `
+:nnoremap ` '
+
+" Change Tab key to go back and forth between brackets
+:nnoremap <Tab> %
+
+" Delete previous word in insert mode with Ctrl+Backspace
+"TODO: This doesn't work
+:inoremap <C-BS> <C-W>
+" Always delete the previous word
+" The default behavior is to delete previous words in the text entered
+" after last starting insert mode, and stops deleting text at the
+" beginning of a line.
+:set backspace=indent,eol,start
+
+:let mapleader = ","
+:let maplocalleader = "`"
+
+" Since backtick is localleader, pressing two backticks will insert a single
+" backtick instead of having to wait for the timeout to kick in and prevent
+" activating some other insert mode binding.
+:inoremap `` `
+
+" Since expand tab is on, insert a real tab using Shift+Tab
+:inoremap <S-Tab> <C-V><Tab>
+
+" Goyo shortcut
+":nnoremap <C-g> :Goyo<CR>
+
+" Easier .vimrc access
+:nnoremap <leader>ev :split $MYVIMRC<CR>
+:nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Uppercase a word in insert mode
+:inoremap <c-u> <esc>viwUea
+
+" External command keybindings
+:nnoremap <leader>c :!$HOME/bin/compiler %:p<CR>
+:nnoremap <leader>v :!$HOME/bin/preview %:p &<CR>
+
+" NERDTree settings
+augroup NERDTree
+    autocmd!
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
+:nnoremap <silent> <expr> <leader>t g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+
+" fzf settings
+:nnoremap <leader>o :Files<CR>
+
+" ale settings
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+function ToggleAle()
+    let g:ale_sign_column_always = (1 - g:ale_sign_column_always)
+    ALEToggle
+endfunction
+:nnoremap <leader>s :call ToggleAle()<CR>
+
+" syntastic settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 2
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+
+" ctags configuration
+set tags=./tags,tags;$HOME
+
+" Copy to and paste from clipboard
+:nnoremap <leader>y "+y
+:nnoremap <leader>p "+p
+:nnoremap <leader>d "+d
+:vnoremap <leader>y "+y
+:vnoremap <leader>p "+p
+:vnoremap <leader>d "+d
+
+" Keybindings for easy movement with content tags
+:inoremap <leader><leader> <Esc>/<++><CR>"_c4l
+:nnoremap <leader><leader> /<++><CR>"_c4l
+
+" Automatically delete trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Function to help insert snippets
+function InsertSnippet(name, ...)
+    " This function requires the `name` argument. This should correspond to a
+    " the name of a snippet file.
+    " In addition, this function can take one optional argument:
+    " - motion: a string with some motion commands (run using :normal) before
+    "   entering insert mode.
+    :execute ".-1read " . g:snippetsdir . "/" . a:name
+    if a:0
+        let motion = a:1
+        :execute "normal! " . motion
+        :startinsert
+    endif
+endfunction
+" Add an alias to make this function accessible
+:nnoremap <leader>S :call InsertSnippet("")<Left><Left>
+
+" Function to help correct syntax highlighting in markdown + latex files
+" Taken from https://stsievert.com/blog/2016/01/06/vim-jekyll-mathjax/
+function! MathAndLiquid()
+    "" Define certain regions
+    " Block math. Look for "$$[anything]$$"
+    syn region math start=/\$\$/ end=/\$\$/
+    " inline math. Look for "$[not $][anything]$"
+    syn match math_block '\$[^$].\{-}\$'
+
+    " Liquid single line. Look for "{%[anything]%}"
+    syn match liquid '{%.*%}'
+    " Liquid multiline. Look for "{%[anything]%}[anything]{%[anything]%}"
+    syn region highlight_block start='{% highlight .*%}' end='{%.*%}'
+    " Fenced code blocks, used in GitHub Flavored Markdown (GFM)
+    syn region highlight_block start='```' end='```'
+
+    "" Actually highlight those regions.
+    hi link math Statement
+    hi link liquid Statement
+    hi link highlight_block Function
+    hi link math_block Function
+endfunction
+
+augroup filetype_python
+    autocmd!
+    autocmd FileType python :iabbrev <buffer> inp import numpy as np
+    autocmd FileType python :iabbrev <buffer> iplt import matplotlib.pyplot as plt
+    autocmd FileType python :iabbrev <buffer> impl import matplotlib as mpl
+    autocmd FileType python :iabbrev <buffer> isci import scipy as sp
+    autocmd FileType python :iabbrev <buffer> ict import cantera as ct
+    autocmd FileType python :iabbrev <buffer> ipd import pandas as pd
+    autocmd FileType python :iabbrev <buffer> ixr import xarray as xr
+    autocmd FileType python :iabbrev <buffer> ipt import pytest
+    autocmd FileType python :iabbrev <buffer> prop @property
+    autocmd FileType python :iabbrev <buffer> ptf @pytest.fixture
+    autocmd FileType python :iabbrev <buffer> ptaf @pytest.fixture(scope="function", autouse=True)
+    autocmd FileType python :iabbrev <buffer> usefix @pytest.mark.usefixtures()<++><Esc>4hi
+    autocmd FileType python :iabbrev <buffer> ipdb import pdb<CR>pdb.set_trace()
+augroup END
+
+augroup filetype_html
+    autocmd!
+    autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+augroup END
+
+augroup filetype_css
+    autocmd!
+    autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
+augroup filetype_bash
+    autocmd!
+    autocmd BufNewFile,BufRead bash_aliases setlocal syntax=sh
+    autocmd BufNewFile,BufRead bash_local_commands setlocal syntax=sh
+augroup END
+
+augroup filetype_zsh
+    autocmd!
+    autocmd BufNewFile *.zsh :execute "normal! i#!/bin/sh\<CR>\<Esc>"
+    autocmd FileType zsh setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
+augroup filetype_markdown
+    autocmd!
+    :let maplocalleader = ""
+    autocmd BufNewFile,BufRead README set syntax=markdown
+    autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
+    autocmd FileType markdown setlocal spell spelllang=en_us
+    autocmd FileType markdown call MathAndLiquid()
+    "autocmd FileType markdown :inoremap <buffer> [ [](<++>) <++><Esc>F[a
+    "autocmd FileType markdown :inoremap <buffer> ![ ![](<++>) <++><Esc>F[a
+augroup END
+
+augroup filetype_bib
+    autocmd!
+    autocmd FileType bib setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType bib :nnoremap <leader>s :g/@*{*,/,/}\n$/s/\n/§<CR>:%sort<CR>:g/@/s/§/\r/g<CR>
+    autocmd FileType bib :iabbrev <buffer> abbrev@ @string { = <++> }<CR><++><Esc>k$F=hi
+    autocmd FileType bib :iabbrev <buffer> article@ <Esc>:call InsertSnippet("article.bib", "f,")<CR>
+    autocmd FileType bib :iabbrev <buffer> book@ <Esc>:call InsertSnippet("book.bib", "f,")<CR>
+    autocmd FileType bib :iabbrev <buffer> web@ <Esc>:call InsertSnippet("online.bib", "f,")<CR>
+    autocmd FileType bib :iabbrev <buffer> online@ <Esc>:call InsertSnippet("online.bib", "f,")<CR>
+augroup END
+
+augroup filetype_rst
+   autocmd!
+    " Add structures for movement tags
+    autocmd FileType rst setlocal spell spelllang=en_us
+    autocmd FileType rst setlocal tabstop=3 softtabstop=3 shiftwidth=3 textwidth=79
+    autocmd FileType rst :inoremap <buffer> <localleader>h# ###<CR><CR>###<CR><CR><++><Esc>3ki
+    autocmd FileType rst :inoremap <buffer> <localleader>h* ***<CR><CR>***<CR><CR><++><Esc>3ki
+    autocmd FileType rst :inoremap <buffer> <localleader>h1 <CR>===<CR><CR><++><Esc>3ki
+    autocmd FileType rst :inoremap <buffer> <localleader>h2 <CR>---<CR><CR><++><Esc>3ki
+    autocmd FileType rst :inoremap <buffer> <localleader>h3 <CR>^^^<CR><CR><++><Esc>3ki
+    autocmd FileType rst :inoremap <buffer> <localleader>c :cite:``<++><Esc>4hi
+    autocmd FileType rst :inoremap <buffer> <localleader>l ` <<++>>`_<++><Esc>12hi
+    autocmd FileType rst :inoremap <buffer> <localleader>b ****<++><Esc>F<2hi
+    autocmd FileType rst :inoremap <buffer> <localleader>i **<++><Esc>F*i
+    autocmd FileType rst :inoremap <buffer> <localleader>r :ref:``<++><Esc>F`i
+    autocmd FileType rst :inoremap <buffer> <localleader>m :math:``<++><Esc>F`i
+    autocmd FileType rst :inoremap <buffer> <localleader>d :download:` <<++>>`<++><Esc>F`;a
+    autocmd FileType rst :nnoremap <buffer> dsr f`xF`xd2F:
+    autocmd FileType rst :iabbrev <buffer> fig@ .. figure:: <CR>:scale: <++><CR><CR>   <++><CR><CR><Esc>i<++><Esc>5k$i
+    " Macro to update last updated time stamp
+    function! UpdateLastUpdatedTime()
+        :normal G
+        :let @t="Last updated: " . strftime('%a %d %b %Y %H:%M:%S %Z')
+        :silent! %s/^Last updated:.*/\=@t/
+    endfunction
+    autocmd FileType rst :nnoremap <buffer> <F5> :call UpdateLastUpdatedTime()<CR>
+    autocmd FileType rst :nnoremap <buffer> <localleader>yp yyPVr#jyypVr#k
+    autocmd FileType rst :nnoremap <buffer> <localleader>yc yyPVr*jyypVr*k
+    autocmd FileType rst :nnoremap <buffer> <localleader>y1 yypVr=k
+    autocmd FileType rst :nnoremap <buffer> <localleader>y2 yypVr-k
+    autocmd FileType rst :nnoremap <buffer> <localleader>y3 yypVr^k
+    " Change heading section
+    autocmd FileType rst :nnoremap <buffer> <localleader>cp jddkyyPVr#jyypVr#k
+    autocmd FileType rst :nnoremap <buffer> <localleader>cc jddkyyPVr*jyypVr*k
+    autocmd FileType rst :nnoremap <buffer> <localleader>c1 jddkyypVr=k
+    autocmd FileType rst :nnoremap <buffer> <localleader>c2 jddkyypVr-k
+    autocmd FileType rst :nnoremap <buffer> <localleader>c3 jddkyypVr^k
+    " Update heading tag lengths based on heading character length
+    function! UpdateHeader(char)
+        if a:char ==# "="
+            :silent! %s/\(.*\)\n===\+$/\=CreateHeaderLines("=", submatch(1))/g
+        elseif a:char ==# "-"
+            :silent! %s/\(.*\)\n---\+$/\=CreateHeaderLines("-", submatch(1))/g
+        elseif a:char ==# "^"
+            :silent! %s/\(.*\)\n^^^\+$/\=CreateHeaderLines("^", submatch(1))/g
+        endif
+    endfunction
+    autocmd FileType rst :nnoremap <buffer> <localleader>ch :call UpdateHeader("=")<CR>:call UpdateHeader("-")<CR>:call UpdateHeader("^")<CR>
+    function! CreateHeaderLines(symbol, header)
+        let len = strlen(a:header)
+        let formatted = a:header . "\n" . repeat(a:symbol, len)
+        return formatted
+    endfunction
+    " Pre write commands
+    function! PreSaveActions()
+        :normal! m9Mm8
+        :call UpdateHeader("=")
+        :call UpdateHeader("-")
+        :call UpdateHeader("^")
+        ":call UpdateLastUpdatedTime()
+        :normal! `8z.`9
+    endfunction
+    autocmd BufWritePre *.rst :call PreSaveActions()
+augroup END
+
+"TODO: Add LaTeX snippets
+augroup filetype_latex
+    autocmd!
+    autocmd FileType tex setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType tex :iabbrev <buffer> eqn@ \begin{equation*}<CR>\end{equation*}<CR><++><Esc>kO
+    autocmd FileType tex :iabbrev <buffer> eqarray@ \begin{eqnarray*}<CR>\end{eqnarray*}<CR><++><Esc>kO
+    autocmd FileType tex :iabbrev <buffer> cases@ \begin{cases}<CR>\end{cases}<CR><++><Esc>kO
+    autocmd FileType tex :iabbrev <buffer> itemize@ \begin{itemize}<CR>\end{itemize}<CR><++><Esc>kO\item
+    autocmd FileType tex :iabbrev <buffer> enumerate@ \begin{enumerate}<CR>\end{enumerate}<CR><++><Esc>kO\item
+    autocmd FileType tex :iabbrev <buffer> fig@ \begin{figure}[ht!]<CR>\begin{center}<CR>\includegraphics[width=\textwidth]{}<CR>\caption{<++>}<CR>\label{<++>}<CR>\end{center}<CR>\end{figure}<CR><++><Esc>5k$i
+augroup END
+
+augroup filetype_make
+    autocmd!
+    autocmd BufNewFile,BufRead make.inc setlocal filetype=make
+augroup END
+
+augroup filetype_cpp
+    autocmd!
+    autocmd FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType cpp :vnoremap <buffer> <leader>x :s/^/\/\//g<CR>
+    autocmd FileType cpp :vnoremap <buffer> <leader>X :s/^\/\///g<CR>
+    "autocmd BufNewFile,BufRead *.cpp,*.tpp :inoremap <buffer> ( ()<space>{<CR><++><CR>}<Esc>2k$F)i
+    "autocmd FileType cpp :inoremap <buffer> ( ()<++><Esc>F)i
+    autocmd FileType cpp :inoremap <buffer> { {<CR>}<Esc>kA
+    autocmd BufNewFile *.h :execute "normal! i#pragma once\<CR>\<Esc>"
+    " Deal with files containing boost unit tests
+    autocmd BufNewFile,BufRead *.tpp setlocal filetype=cpp
+    autocmd BufNewFile,BufRead *.tpp setlocal syntax=cpp
+    autocmd FileType cpp :noreabbrev <buffer> bfts BOOST_FIXTURE_TEST_SUITE();<CR><CR><++><CR><CR>BOOST_AUTO_TEST_SUITE_END();<Esc>4k0f(a
+    autocmd FileType cpp :noreabbrev <buffer> bats BOOST_AUTO_TEST_SUITE();<CR><CR><++><CR><CR>BOOST_AUTO_TEST_SUITE_END();<Esc>4k0f(a
+    autocmd FileType cpp :noreabbrev <buffer> batc BOOST_AUTO_TEST_CASE() {<CR><++><CR>}<Esc>2k0f(a
+    autocmd FileType cpp :noreabbrev <buffer> btse BOOST_AUTO_TEST_SUITE_END();
+augroup END
+
+":set colorcolumn=80
+"let &colorcolumn="73,".join(range(80,999),",")
+"highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+augroup filetype_gitcommit
+    autocmd!
+    autocmd FileType gitcommit setlocal spell spelllang=en_us
+augroup END
+
