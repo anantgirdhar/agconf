@@ -5,11 +5,12 @@ sudo pacman -S --noconfirm python
 sudo pacman -S --noconfirm python-pip
 pip install virtualenv
 # Setup the "main" virtualenv
-[ ! -d "$HOME/.local/share/virtualenv" ] && mkdir "$HOME/.local/share/virtualenv"
-virtualenv $HOME/.local/share/virtualenv/py
+[ ! -d "$HOME/.local/share/virtualenv" ] && mkdir -p "$HOME/.local/share/virtualenv"
+$HOME/.local/bin/virtualenv $HOME/.local/share/virtualenv/py
 # Install all the packages inside this virtualenv
 source $HOME/.local/share/virtualenv/py/bin/activate
 pip install -r python_requirements_main.txt
+deactivate
 
 # I don't remember why this was needed so I'm commenting it out for now
 # Hopefully nothing breaks, but if something does, then we'll know!
