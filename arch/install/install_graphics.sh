@@ -8,7 +8,7 @@ echo "  2. AMD iGPU + Nvidia dGPU"
 echo -n "Enter the option number: "
 read configuration
 
-case $configuration
+case $configuration in
   "1") sudo pacman -S --noconfirm xf86-video-intel ;;
   "2")
     sudo pacman -S --noconfirm xf86-video-amdgpu xf86-video-ati mesa \
