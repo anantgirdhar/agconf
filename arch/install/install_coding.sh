@@ -21,3 +21,6 @@ sudo pacman -S --noconfirm cmake
 sudo pacman -S --noconfirm texlive-most
 sudo pacman -S --noconfirm gdb
 sudo pacman -S --noconfirm ctags
+
+# Virtualbox
+sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
