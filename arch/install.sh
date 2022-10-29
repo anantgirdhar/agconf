@@ -6,5 +6,4 @@
 ./install/install_utilities.sh
 ./install/install_AUR.sh
 ./install/install_graphics.sh
-./install/install_suckless.sh
 ./install/install_programming.sh
