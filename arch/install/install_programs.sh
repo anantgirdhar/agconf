@@ -5,6 +5,7 @@ sudo pacman -S --noconfirm git
 sudo pacman -S --noconfirm gvim  # to enable copy-pasting to system clipboard
 sudo pacman -S --noconfirm imagemagick
 sudo pacman -S --noconfirm ranger w3m  # w3m needed for image previews
+sudo pacman -S --noconfirm lf
 sudo pacman -S --noconfirm ueberzug  # image previews with ranger
 sudo pacman -S --noconfirm firefox
 sudo pacman -S --noconfirm zathura zathura-pdf-mupdf zathura-ps zathura-djvu

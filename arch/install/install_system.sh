@@ -2,7 +2,7 @@
 
 # Window manager
 sudo pacman -S --noconfirm xorg-server xorg-xinit i3-gaps i3blocks rxvt-unicode
-sudo pacman -S --noconfirm xorg-xprop
+sudo pacman -S --noconfirm xorg-xprop xorg-xev
 sudo pacman -S --noconfirm xorg-xkill
 sudo pacman -S --noconfirm xorg-xbacklight
 sudo pacman -S --noconfirm compton
