@@ -1,0 +1,19 @@
+notebook
+ipywidgets
+#jupytext # convert between ipynb and py or md
+numpy
+matplotlib
+scipy
+pillow  # to be able to save jpgs from matplotlib
+xarray
+sphinx
+recommonmark
+sphinxcontrib-bibtex
+nbsphinx
+nbsphinx-link
+pytest
+fluiddyn
+flake8  # python linters
+flake8-docstrings
+flake8-rst-docstrings
+flake8-import-order
