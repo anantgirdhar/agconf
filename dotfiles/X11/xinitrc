@@ -5,6 +5,8 @@ compton &
 dunst &
 setxkbmap -option caps:swapescape &
 
+[ -f "/usr/bin/prime-offload" ] && /usr/bin/prime-offload &
+
 if [ "$(tty)" = "/dev/tty1" ]; then
     sxhkd &
     dwmblocks &
