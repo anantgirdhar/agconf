@@ -2,7 +2,7 @@
 
 # Set the build directory to be inside the main config directory so that we can
 # use the config_edit script
-BUILDDIR="$AGCONFIG/programs"
+BUILDDIR="../programs"
 [ ! -d "$BUILDDIR" ] && mkdir "$BUILDDIR"
 
 # Save the current working directory to return to it later
