@@ -32,7 +32,6 @@ src=$DOTFILES_DIR/profile
 target=$HOME/.profile
 [ -f $target ] && rm $target
 ln -s $src $target
-
 # Create .zprofile (symlink to .profile)
 ln -s $target $HOME/.zprofile
 
@@ -41,15 +40,10 @@ target=$HOME/.bashrc
 [ -f $target ] && rm $target
 ln -s $src $target
 
-src=$DOTFILES_DIR/gitconfig
-target=$HOME/.gitconfig
+src=$DOTFILES_DIR/aliases
+target=$HOME/.config
 [ -f $target ] && rm $target
 ln -s $src $target
-
-# Copy ssh config
-[ -d $HOME/.ssh ] || mkdir $HOME/.ssh
-[ -f $HOME/.ssh/config ] && rm $HOME/.ssh/config
-ln -s $DOTFILES_DIR/ssh/config $HOME/.ssh/config
 
 # Fix mouse scrolling
 [ -f /etc/X11/xorg.conf.d/40-touchpad.conf ] && \
