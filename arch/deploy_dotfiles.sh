@@ -55,7 +55,3 @@ ln -s $DOTFILES_DIR/ssh/config $HOME/.ssh/config
 [ -f /etc/X11/xorg.conf.d/40-touchpad.conf ] && \
     mv /etc/X11/xorg.conf.d/40-touchpad.conf /etc/X11/xorg.conf.d/40-touchpad.conf.bk
 sudo ln -s $DOTFILES_DIR/misc/40-libinput.conf /etc/X11/xorg.conf.d/40-touchpad.conf
-
-# Change the shell to zsh
-chsh -s /usr/bin/zsh
-
