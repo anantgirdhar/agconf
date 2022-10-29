@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_DIR="`pwd`/../dotfiles"
+DOTFILES_DIR=$(realpath `pwd`/../dotfiles)
 if [ ! -d "$DOTFILES_DIR" ]; then
 	echo "ERROR: Dotfiles directory not found."
 	exit -1
