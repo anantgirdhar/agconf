@@ -44,8 +44,3 @@ src=$DOTFILES_DIR/aliases
 target=$HOME/.config
 [ -f $target ] && rm $target
 ln -s $src $target
-
-# Fix mouse scrolling
-[ -f /etc/X11/xorg.conf.d/40-touchpad.conf ] && \
-    mv /etc/X11/xorg.conf.d/40-touchpad.conf /etc/X11/xorg.conf.d/40-touchpad.conf.bk
-sudo ln -s $DOTFILES_DIR/misc/40-libinput.conf /etc/X11/xorg.conf.d/40-touchpad.conf
