@@ -44,3 +44,8 @@ src=$DOTFILES_DIR/aliases
 target=$HOME/.config
 [ -f $target ] && rm $target
 ln -s $src $target
+
+src=$DOTFILES_DIR/wgetrc
+target=$HOME/.config/wgetrc
+[ -f $target ] && rm $target
+ln -s $src $target
