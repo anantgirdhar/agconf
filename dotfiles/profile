@@ -5,8 +5,12 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
-PATH="$HOME/bin:$PATH"
-for d in `ls -d $HOME/bin/*/`; do
+export AGCONFIG="$HOME/.local/agconfig"
+export AGLOCALCONFIG="$HOME/.local/aglocal"
+export AGSCRIPTS="$HOME/.local/agscripts"
+
+PATH="$AGSCRIPTS:$PATH"
+for d in `ls -d $AGSCRIPTS/*/`; do
     export PATH="$d:$PATH"
 done
 
