@@ -46,10 +46,10 @@ if [ -f "$LOCAL_COMMANDS" ]; then
     source "$LOCAL_COMMANDS"
 fi
 
-alias se=". $AGSCRIPTS/script_edit"
-alias ce=". $AGSCRIPTS/config_edit"
-alias devgo=". $AGSCRIPTS/dev_edit cd"
-alias devedit=". $AGSCRIPTS/dev_edit edit"
+alias se="$AGSCRIPTS/script_edit"
+alias ce="$AGSCRIPTS/config_edit"
+alias devgo="$AGSCRIPTS/dev_edit cd"
+alias devedit="$AGSCRIPTS/dev_edit edit"
 
 # Git
 alias g='git status'
