@@ -29,3 +29,4 @@ yay -S libxft-bgra-git
 
 yay -S zsh-you-should-use
 yay -S brave-bin
+yay -S librewolf-bin
