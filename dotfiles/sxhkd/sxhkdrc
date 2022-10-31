@@ -12,25 +12,25 @@ super + c
 
 # utilities
 super + {_,shift + } F2
-	$HOME/bin/{pmount,unmount}
+	$AGSCRIPTS/{pmount,unmount}
 super + F4
-	$HOME/bin/multimonitor
+	$AGSCRIPTS/multimonitor
 
 #TODO: Change this back to using a keycode instead of a keysym
 super + F8
-	$HOME/bin/setkbmap && pkill -RTMIN+3 dwmblocks
+	$AGSCRIPTS/setkbmap && pkill -RTMIN+3 dwmblocks
 
 # screenshots
 super + Print
-	$HOME/bin/screenshot
+	$AGSCRIPTS/screenshot
 Print
-	$HOME/bin/screenshot "window"
+	$AGSCRIPTS/screenshot "window"
 shift + Print
-	$HOME/bin/screenshot "window copy"
+	$AGSCRIPTS/screenshot "window copy"
 control + Print
-	$HOME/bin/screenshot "selection"
+	$AGSCRIPTS/screenshot "selection"
 control + shift + Print
-	$HOME/bin/screenshot "selection copy"
+	$AGSCRIPTS/screenshot "selection copy"
 
 # audio
 super + m
