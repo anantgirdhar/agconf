@@ -12,7 +12,7 @@ sudo pacman -S --noconfirm zathura zathura-pdf-mupdf zathura-ps zathura-djvu
 sudo pacman -S --noconfirm xournalpp
 sudo pacman -S --noconfirm qutebrowser pdfjs
 sudo pacman -S --noconfirm libreoffice
-sudo pacman -S --noconfirm pandoc pandoc-citeproc
+sudo pacman -S --noconfirm pandoc
 sudo pacman -S --noconfirm zip unzip unrar
 sudo pacman -S --noconfirm rsync
 sudo pacman -S --noconfirm fzf
