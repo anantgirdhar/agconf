@@ -85,7 +85,7 @@ setopt correct_all  # Correct typos
 # Get aliases
 alias ls='ls --color=auto'
 SHRC=$XDG_CONFIG_HOME/zsh/.zshrc
-ALIASES_FILE=$XDG_CONFIG_HOME/sh/aliases
+ALIASES_FILE=$XDG_CONFIG_HOME/aliases
 [ -f "$ALIASES_FILE" ] && source "$ALIASES_FILE"
 
 # bindkeys
