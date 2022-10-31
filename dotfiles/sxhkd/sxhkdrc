@@ -47,5 +47,5 @@ shift + {F2,F3}
 	xbacklight -set {5,100}
 
 #TODO: Add system lock, halt, restart, etc
-super + shift + x ; {l,h,r}
+super + x ; {l,h,r}
 	{i3lock -c 000000,shutdown -h now,shutdown -r now}
