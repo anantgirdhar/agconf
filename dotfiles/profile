@@ -13,6 +13,7 @@ PATH="$AGSCRIPTS:$PATH"
 for d in `ls -d $AGSCRIPTS/*/`; do
     export PATH="$d:$PATH"
 done
+PATH="$HOME/.local/bin:$PATH"
 
 # Keep the home directory clean
 export LESSHISTFILE=-
