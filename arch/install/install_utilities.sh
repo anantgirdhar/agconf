@@ -26,6 +26,7 @@ sudo pacman -S --noconfirm bc
 sudo pacman -S --noconfirm perl-image-exiftool
 sudo pacman -S --noconfirm odt2txt
 sudo pacman -S --noconfirm pinta
+sudo pacman -S --noconfirm jq
 
 # Image
 #sudo pacman -S --noconfirm eog
