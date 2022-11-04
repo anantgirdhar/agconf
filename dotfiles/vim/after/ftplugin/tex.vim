@@ -7,6 +7,8 @@ setlocal textwidth=79
 
 setlocal spell spelllang=en_us
 
+setlocal conceallevel=0
+
 iabbrev <buffer> eqn@ \begin{equation*}<CR>\end{equation*}<++><Esc>kA
 iabbrev <buffer> eqa@ \begin{eqnarray*}<CR>\end{eqnarray*}<++><Esc>kA
 iabbrev <buffer> sec@ \section*{}<CR><CR><++><Esc>2k$i
