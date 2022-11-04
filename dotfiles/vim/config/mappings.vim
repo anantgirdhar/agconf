@@ -31,8 +31,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 inoremap <c-u> <esc>viwUea
 
 " External command keybindings
-nnoremap <leader>c :!$HOME/bin/compiler %:p<CR>
-nnoremap <leader>v :!$HOME/bin/preview %:p &<CR>
+nnoremap <leader>c :!$AGSCRIPTS/compiler %:p<CR>
+nnoremap <leader>v :!$AGSCRIPTS/preview %:p &<CR>
 
 " Copy to and paste from clipboard
 nnoremap <leader>y "+y
