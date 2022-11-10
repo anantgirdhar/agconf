@@ -10,7 +10,7 @@ config.load_autoconfig(False)
 c.session.lazy_restore = True
 
 # Dark mode
-config.set("colors.webpage.darkmode.enabled", False)
+config.set("colors.webpage.darkmode.enabled", True)
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
