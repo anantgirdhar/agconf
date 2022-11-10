@@ -41,8 +41,8 @@ super + shift + {period,comma}
 	volume_control {up,down} 1 && pkill -RTMIN+1 dwmblocks
 
 # screen
-XF86MonBrightness{Down,Up}
-	xbacklight -{dec,inc} 2
+super + {Next,Prior}
+	$AGSCRIPTS/brightness_control {down,up} 5
 shift + {F2,F3}
 	xbacklight -set {5,100}
 
