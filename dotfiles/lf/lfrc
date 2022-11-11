@@ -14,15 +14,16 @@ set previewer '~/.config/lf/scope'
 set relativenumber
 
 cmd open ${{
-  case $(echo "$f") in
-    *.xlsx) setsid -f localc $f ;;
-  esac
+  # case $(echo "$f") in
+  #   *.xlsx) setsid -f localc $f ;;
+  # esac
   case $(file --mime-type "$(readlink -f $f)" -b) in
     application/pdf) setsid -f zathura $fx > /dev/null 2>&1 ;;
     video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
     audio/*) mpv --audio-display=no $f ;;
-    text/csv) localc $f ;;
     application/vnd.oasis.opendocument.spreadsheet) localc $f ;;
+    text/csv) localc $f ;;
+    text/*) $EDITOR $f ;;
     image/*) sxiv $f ;;
   esac
 }}
