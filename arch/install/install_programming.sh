@@ -24,4 +24,4 @@ sudo pacman -S --noconfirm texlive-most
 sudo pacman -S --noconfirm biber
 
 # Virtualbox
-sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms
+sudo pacman -S --noconfirm virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-guest-utils
