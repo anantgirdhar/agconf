@@ -104,6 +104,7 @@ alias tensorboard='python $(pip show tensorboard | grep "Location: " | cut -d ":
 alias nbx='jupyter nbconvert --execute --to notebook --inplace'
 alias abook='abook --config $XDG_CONFIG_HOME/abook/abookrc'
 alias units='units --history $XDG_CACHE_HOME/units_history'
+alias py='source $XDG_DATA_HOME/virtualenv/py/bin/activate'
 
 # Access external systems
 alias gryphon='ssh -Y gryphon'
