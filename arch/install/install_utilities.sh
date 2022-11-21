@@ -39,3 +39,4 @@ sudo pacman -S --noconfirm espeak
 sudo pacman -S --noconfirm units  # unit conversion program
 sudo pacman -S --noconfirm highlight
 sudo pacman -S --noconfirm bat  # cat with syntax highlighting
+sudo pacman -S --noconfirm gnuplot
