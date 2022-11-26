@@ -45,6 +45,9 @@ vnoremap <leader>d "+d
 " Keybindings for easy movement with content tags
 nnoremap <leader><leader> /<++><CR>"_c4l
 
+" Keybindings for fzf
+nnoremap <leader>f :Files<CR>
+
 " Toggle various features
 nnoremap <C-s> :set spell!<CR>
 inoremap <C-s> <Esc>:set spell!<CR>i
