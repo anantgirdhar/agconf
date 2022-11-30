@@ -13,4 +13,6 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     exec dwm
 elif [ "$(tty)" = "/dev/tty2" ]; then
     exec i3
+elif [ "$(tty)" = "/dev/tty3" ]; then
+    exec awesome
 fi
