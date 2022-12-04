@@ -43,7 +43,7 @@ DD="$DOTFILES_DIR"
 C="$HOME/.config"
 
 # Link the required config files in the right places
-link $DD/aliases $HOME/.aliases
+link $DD/aliases $C/aliases
 link $DD/awesome $C/awesome
 link $DD/bash/bashrc $HOME/.bashrc
 link $DD/calcurse $C/calcurse
