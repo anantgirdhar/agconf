@@ -9,10 +9,12 @@ export AGCONFIG="$HOME/.local/agconf"
 export AGLOCALCONFIG="$HOME/.local/aglocal"
 export AGSCRIPTS="$HOME/.local/agscripts"
 
-PATH="$AGSCRIPTS:$PATH"
-for d in `ls -d $AGSCRIPTS/*/`; do
-    export PATH="$d:$PATH"
-done
+if [ -d "$AGSCRIPTS" ]; then
+    PATH="$AGSCRIPTS:$PATH"
+    for d in `ls -d $AGSCRIPTS/*/`; do
+        export PATH="$d:$PATH"
+    done
+fi
 PATH="$HOME/.local/bin:$PATH"
 
 # Keep the home directory clean
