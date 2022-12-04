@@ -1,0 +1,39 @@
+# Basic programs
+git
+vim-gui-common  # to enable copy-pasting to system clipboard
+imagemagick
+ranger w3m  # w3m needed for image previews
+#lf -- check
+#ueberzug  # image previews with ranger
+firefox
+zathura zathura-pdf-poppler zathura-ps zathura-djvu
+xournalpp
+qutebrowser #pdfjs wasn't in the repos
+libreoffice
+pandoc
+zip unzip unrar
+rsync
+fzf
+ripgrep
+maim  # For screenshots
+entr  # automate tasks when files update
+calcurse
+abook
+bc
+#perl-image-exiftool
+odt2txt
+pinta
+jq
+
+# Image
+#eog
+sxiv
+gthumb  # quick image editing
+
+# Misc
+xclip
+espeak
+units  # unit conversion program
+highlight
+bat  # cat with syntax highlighting
+gnuplot
