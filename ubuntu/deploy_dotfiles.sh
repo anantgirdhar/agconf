@@ -15,13 +15,21 @@ link() {
     src="$1"
     target="$2"
     # If the destination is a link and points to the source, we're done
-    if [ -L "$target" ] && [ $(realpath $(readlink "$target")) = $(realpath "$src") ]; then
-        echo "$target already pointing to something. Skipping."
-        return
+    if [ -L "$target" ]; then
+        if [ ! -z $(readlink -e "$target") ] && [ $(realpath $(readlink -e "$target")) = $(realpath "$src") ]; then
+            echo "$target already pointing to correct thing. Skipping."
+            return
+        else
+            # If it does not point to the source, then remove the link
+            echo "$target pointing to something incorrect. Removing link."
+            rm "$target"
+        fi
     elif [ -f "$target" ]; then
+        # If it is a regular file, remove the file
         echo "Removing file $target"
         rm "$target"
     elif [ -d "$target" ]; then
+        # If it is a directory, remove the directory
         echo "Removing directory $target"
         rm -rf "$target"
     fi
