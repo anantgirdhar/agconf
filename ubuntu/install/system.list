@@ -1,5 +1,6 @@
 # Window manager
 awesome
+libx11-dev libxinerama-dev libxft-dev
 feh
 x11-xserver-utils arandr
 neofetch
