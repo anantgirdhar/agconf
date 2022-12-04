@@ -17,3 +17,4 @@ flake8  # python linters
 flake8-docstrings
 flake8-rst-docstrings
 flake8-import-order
+torch
