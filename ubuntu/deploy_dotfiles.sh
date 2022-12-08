@@ -50,6 +50,7 @@ link $DD/calcurse $C/calcurse
 link $DD/lf $C/lf
 link $DD/localutils $C/localutils
 link $DD/mpv $C/mpv
+link $DD/picom $C/picom
 link $DD/profile $HOME/.profile
 link $HOME/.profile $HOME/.zprofile
 link $DD/qutebrowser $C/qutebrowser
