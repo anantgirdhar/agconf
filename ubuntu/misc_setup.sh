@@ -10,6 +10,9 @@ PICTURES="$HOME/pics"
 [ ! -d "$DOCUMENTS" ] && mkdir "$DOCUMENTS"
 [ ! -d "$PICTURES" ] && mkdir "$PICTURES"
 
+# Create vim directories
+mkdir -p $HOME/.cache/vim/{backup,swap}
+
 # Change shell to zsh
 chsh -s /usr/bin/zsh
 
