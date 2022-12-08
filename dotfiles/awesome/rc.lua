@@ -447,3 +447,14 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Gaps
 beautiful.useless_gap = 5
+
+-- Autorun programs
+autorun = true
+autorunApps = {
+  "sxhkd",
+}
+if autorun then
+  for app = 1, #autorunApps do
+    awful.util.spawn(autorunApps[app])
+  end
+end
