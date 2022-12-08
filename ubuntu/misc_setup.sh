@@ -15,7 +15,6 @@ mkdir -p $HOME/.cache/vim/{backup,swap}
 
 # Create custom XDG user directories and remove the regular ones
 mkdir -p $HOME/.local/ubuntu_dirs/{desktop,templates,public,music,videos}
-mkdir $HOME/{dl,docs,pictures}
 rmdir $HOME/{Desktop,Documents,Downloads,Music,Pictures,Public,Templates,Videos}
 
 # Change shell to zsh
