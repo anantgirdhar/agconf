@@ -188,9 +188,9 @@ globalkeys = gears.table.join(
   -- Awesome manipulation
   awful.key({ modkey, }, "s", hotkeys_popup.show_help,
     {description = "show help", group = "awesome"}),
-  awful.key({ modkey, "Shift", }, "q", awesome.restart,
+  awful.key({ modkey, "Shift", }, "x", awesome.restart,
     {description = "reload awesome", group = "awesome"}),
-  awful.key({ modkey, "Shift", "Ctrl" }, "q", awesome.quit,
+  awful.key({ modkey, "Shift", "Ctrl" }, "x", awesome.quit,
     {description = "quit awesome", group = "awesome"}),
 
   -- Tag manipulation
