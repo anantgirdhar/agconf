@@ -81,7 +81,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()  --TODO: Is it possible to get seconds and change the format?
+mytextclock = wibox.widget.textclock("%a %Y-%m-%d %H:%M:%S", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -166,6 +166,9 @@ awful.screen.connect_for_each_screen(function(s)
       layout = wibox.layout.fixed.horizontal,
       mykeyboardlayout,
       wibox.widget.systray(),
+      awful.widget.watch('weather', 3600),
+      awful.widget.watch('stockprice', 2),
+      awful.widget.watch('battery', 10),
       mytextclock,
       s.mylayoutbox,
     },
