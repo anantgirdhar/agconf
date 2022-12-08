@@ -48,4 +48,4 @@ shift + {F2,F3}
 
 #TODO: Add system lock, halt, restart, etc
 super + x ; {l,h,r}
-	{i3lock -c 000000,shutdown -h now,shutdown -r now}
+	{i3lock -c 090010,shutdown -h now,shutdown -r now}
