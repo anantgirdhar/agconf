@@ -452,6 +452,7 @@ beautiful.useless_gap = 5
 autorun = true
 autorunApps = {
   "sxhkd",
+  "setxkbmap -option caps:swapescape",
 }
 if autorun then
   for app = 1, #autorunApps do
