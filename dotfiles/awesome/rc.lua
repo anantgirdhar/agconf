@@ -409,9 +409,9 @@ awful.rules.rules = {
   {
     rule_any = {
       class = {
-        "Firefox" ,
+        "firefox" ,
         "Brave-browser",
-        "Librewolf"
+        "librewolf-default"
       }
     },
     properties = { screen = 1, tag = "9" }
