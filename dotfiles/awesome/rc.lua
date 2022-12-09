@@ -453,6 +453,7 @@ autorun = true
 autorunApps = {
   "sxhkd",
   "setxkbmap -option caps:swapescape",
+  "picom",
 }
 if autorun then
   for app = 1, #autorunApps do
