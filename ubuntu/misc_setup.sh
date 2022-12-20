@@ -11,11 +11,16 @@ PICTURES="$HOME/pics"
 [ ! -d "$PICTURES" ] && mkdir "$PICTURES"
 
 # Create vim directories
-mkdir -p $HOME/.cache/vim/{backup,swap}
+mkdir -p $HOME/.cache/vim/backup
+mkdir -p $HOME/.cache/vim/swap
 
 # Create custom XDG user directories and remove the regular ones
-mkdir -p $HOME/.local/ubuntu_dirs/{desktop,templates,public,music,videos}
-rmdir $HOME/{Desktop,Documents,Downloads,Music,Pictures,Public,Templates,Videos}
+for dir in desktop templates public music videos; do
+  mkdir -p $HOME/.local/ubuntu_dirs/$dir
+done
+for dir in Desktop Documents Downloads Music Pictures Public Templates Videos; do
+  rmdir $HOME/$dir
+done
 
 # Change shell to zsh
 chsh -s /usr/bin/zsh
