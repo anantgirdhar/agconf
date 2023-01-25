@@ -1,51 +1,35 @@
 #!/bin/bash
 
-DOTFILES_DIR=$(realpath `pwd`/../dotfiles)
-if [ ! -d "$DOTFILES_DIR" ]; then
-	echo "ERROR: Dotfiles directory not found."
-	exit -1
-fi
+source ../deploy_dotfiles_helper.sh
 
-# Check if application config directory exists
-# If not, create it
-[ ! -d "$HOME/.config" ] && mkdir $HOME/.config
+# Create some aliases to reduce typing in the following commands
+# Most dotifles should end up in ~/.config
+DD="$DOTFILES_DIR"
+C="$HOME/.config"
 
-# Setup most of the dotfiles in ~/.config
-destdir=$HOME/.config
-for d in `ls -d $DOTFILES_DIR/*/`; do
-    # Handle the exceptions separately
-    d=$(basename $d)
-    [ "$d" = "misc" ] && continue
-    [ "$d" = "bash" ] && continue
-    [ "$d" = "ssh" ] && continue
-    # If the destination directory already exists, remove it
-    [ -d "$destdir/$d" ] && rm -rf "$destdir/$d"
-    # Create a symlink to the dotfile dir
-    ln -s "$DOTFILES_DIR/$d" "$destdir/$d"
-done
-
-# Handle the exceptions now
-
-# Setup basic system configs
-
-src=$DOTFILES_DIR/profile
-target=$HOME/.profile
-[ -f $target ] && rm $target
-ln -s $src $target
-# Create .zprofile (symlink to .profile)
-ln -s $target $HOME/.zprofile
-
-src=$DOTFILES_DIR/bash/bashrc
-target=$HOME/.bashrc
-[ -f $target ] && rm $target
-ln -s $src $target
-
-src=$DOTFILES_DIR/aliases
-target=$HOME/.config
-[ -f $target ] && rm $target
-ln -s $src $target
-
-src=$DOTFILES_DIR/wgetrc
-target=$HOME/.config/wgetrc
-[ -f $target ] && rm $target
-ln -s $src $target
+# Link the required config files in the right places
+link $DD/aliases $C/aliases
+link $DD/awesome $C/awesome
+link $DD/bash/bashrc $HOME/.bashrc
+link $DD/calcurse $C/calcurse
+link $DD/clarence $C/clarence
+link $DD/dunst $C/dunst
+link $DD/eduroam_ca.pem $C/eduroam_ca.pem
+link $DD/fontconfig $C/fontconfig
+link $DD/i3 $C/i3
+link $DD/lf $C/lf
+link $DD/localutils $C/localutils
+link $DD/mpv $C/mpv
+link $DD/npm $C/npm
+link $DD/picom $C/picom
+link $DD/profile $HOME/.profile
+link $HOME/.profile $HOME/.zprofile
+link $DD/qutebrowser $C/qutebrowser
+link $DD/ranger $C/ranger
+link $DD/stnote $C/stnote
+link $DD/sxhkd $C/sxhkd
+link $DD/vim $C/vim
+link $DD/wgetrc $C/wgetrc
+link $DD/X11 $C/X11
+link $DD/zathura $C/zathura
+link $DD/zsh $C/zsh
