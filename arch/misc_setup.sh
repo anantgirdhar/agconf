@@ -10,6 +10,10 @@ PICTURES="$HOME/pics"
 [ ! -d "$DOCUMENTS" ] && mkdir "$DOCUMENTS"
 [ ! -d "$PICTURES" ] && mkdir "$PICTURES"
 
+# Create vim directories
+mkdir -p $HOME/.cache/vim/backup
+mkdir -p $HOME/.cache/vim/swap
+
 # Change shell to zsh
 chsh -s /usr/bin/zsh
 
@@ -22,6 +26,6 @@ echo "Current user: $user"
 echo "Groups: $(groups)"
 echo -n "Which group do you want to own the media directory: "
 read group
-sudo mkdir /media
-sudo mkdir "$MEDIADIR"
+[ ! -d /media ] && sudo mkdir /media
+[ ! -d "$MEDIADIR" ] &&  sudo mkdir "$MEDIADIR"
 sudo chown -R $user:$group "$MEDIADIR"
