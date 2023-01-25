@@ -1,5 +1,5 @@
 # programs
-super + shift + f
+super + o
 	$TERMINAL -e $FILE
 super + p
 	$TERMINAL -e htop
