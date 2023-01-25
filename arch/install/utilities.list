@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Basic programs
+git
+gvim  # to enable copy-pasting to system clipboard
+imagemagick
+ranger w3m  # w3m needed for image previews
+lf
+ueberzug  # image previews with ranger
+firefox
+zathura zathura-pdf-mupdf zathura-ps zathura-djvu
+xournalpp
+qutebrowser pdfjs
+libreoffice
+pandoc
+zip unzip unrar
+rsync
+fzf
+ripgrep
+cronie  #TODO: systemctl enable cronie
+maim  # For screenshots
+entr  # automate tasks when files update
+calcurse
+abook
+bc
+perl-image-exiftool
+odt2txt
+pinta
+jq
+
+# Image
+#eog
+sxiv
+gthumb  # quick image editing
+
+# Misc
+xclip
+espeak
+units  # unit conversion program
+highlight
+bat  # cat with syntax highlighting
+gnuplot

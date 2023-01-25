@@ -1,0 +1,48 @@
+# Window manager
+xorg-server xorg-xinit i3-gaps i3blocks rxvt-unicode
+xorg-xprop xorg-xev
+xorg-xkill
+xorg-xbacklight
+compton
+feh
+libnotify
+i3lock
+dunst  # notification server
+arandr
+xdotool
+neofetch
+sxhkd
+
+# Fonts
+ttf-linux-libertine ttf-inconsolata ttf-joypixels
+ttf-fira-code
+noto-fonts-cjk
+noto-fonts-emoji
+
+# zsh
+zsh
+zsh-syntax-highlighting
+
+# System
+acpi  # to get battery information
+pkgfile
+htop
+ncdu
+
+# Network
+openssh
+sshfs
+wget
+ifplugd
+linux-firmware
+
+# Media
+#TODO: Add PulseAudio and other details
+pulseaudio pamixer alsa-utils
+pavucontrol
+mpv
+
+# Filesystem tools
+dosfstools  # for mkfs.vfat
+ntfsprogs  # for mkfs.ntfs
+exfat-utils  # to mount exfat: mount -t exfat /dev/sdb1 mountpoint

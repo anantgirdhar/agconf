@@ -1,0 +1,17 @@
+# Python
+python
+python-pip
+
+# I don't remember why this was needed so I'm commenting it out for now
+# Hopefully nothing breaks, but if something does, then we'll know!
+#sudo pacman -S --noconfirm python-pyqt5 qt5-svg
+
+# Misc programming tools
+cmake
+gdb
+ctags
+texlive-most
+biber
+
+# Virtualbox
+virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-guest-utils

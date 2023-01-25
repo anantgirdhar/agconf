@@ -1,0 +1,13 @@
+# Android mounting tool
+simple-mtpfs
+
+# Symbola font (because noto-fonts-emoji was breaking with st)
+ttf-symbola
+
+# To get color emoji support in dwm
+# Otherwise, dwm just crashes
+libxft-bgra-git
+
+zsh-you-should-use
+brave-bin
+librewolf-bin
