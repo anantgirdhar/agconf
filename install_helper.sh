@@ -27,7 +27,7 @@ elif [ $installCmd = "snap" ]; then
 elif [ $installCmd = "pacman" ]; then
   sudo pacman -S $(sed s/#.*// $filename)
 elif [ $installCmd = "yay" ]; then
-  sudo yay -S $(sed s/#.*// $filename)
+  yay -S $(sed s/#.*// $filename)
 else
   echo "$installCmd not supported"
   exit 2
