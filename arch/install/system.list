@@ -1,5 +1,6 @@
 # Window manager
 xorg-server xorg-xinit i3-gaps i3blocks rxvt-unicode
+awesome
 xorg-xprop xorg-xev
 xorg-xkill
 xorg-xbacklight
