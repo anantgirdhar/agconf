@@ -21,7 +21,6 @@ cronie  #TODO: systemctl enable cronie
 maim  # For screenshots
 entr  # automate tasks when files update
 calcurse
-abook
 bc
 perl-image-exiftool
 odt2txt
@@ -35,7 +34,6 @@ gthumb  # quick image editing
 
 # Misc
 xclip
-espeak
 units  # unit conversion program
 highlight
 bat  # cat with syntax highlighting
