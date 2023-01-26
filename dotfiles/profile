@@ -67,7 +67,7 @@ export LESS_TERMCAP_me=$(tput sgr0)
 if uname -a | grep --quiet 'Ubuntu'; then
   pass
 else
-  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx "$XINITRC"
-  [ "$(tty)" = "/dev/tty2" ] && ! pgrep -x awesome >/dev/null && exec startx "$XINITRC"
+  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x awesome >/dev/null && exec startx "$XINITRC"
+  [ "$(tty)" = "/dev/tty2" ] && ! pgrep -x dwm >/dev/null && exec startx "$XINITRC"
   [ "$(tty)" = "/dev/tty3" ] && ! pgrep -x i3 >/dev/null && exec startx "$XINITRC"
 fi

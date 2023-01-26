@@ -8,11 +8,11 @@ setxkbmap -option caps:swapescape &
 [ -f "/usr/bin/prime-offload" ] && /usr/bin/prime-offload &
 
 if [ "$(tty)" = "/dev/tty1" ]; then
+    exec awesome
+elif [ "$(tty)" = "/dev/tty2" ]; then
     sxhkd &
     dwmblocks &
     exec dwm
-elif [ "$(tty)" = "/dev/tty2" ]; then
-    exec i3
 elif [ "$(tty)" = "/dev/tty3" ]; then
-    exec awesome
+    exec i3
 fi
