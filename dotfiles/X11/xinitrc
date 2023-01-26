@@ -3,7 +3,7 @@
 feh --no-fehbg --bg-scale $HOME/pics/wallpaper.jpg &
 compton &
 dunst &
-setxkbmap -option caps:swapescape &
+/* setxkbmap -option caps:swapescape & */
 
 [ -f "/usr/bin/prime-offload" ] && /usr/bin/prime-offload &
 
