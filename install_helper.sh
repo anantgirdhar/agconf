@@ -21,16 +21,14 @@ filename=$2
 [ -z $filename ] && Usage && exit 1
 
 if [ $installCmd = "apt" ]; then
-  installCmd="$installCmd install"
+  sudo apt install $(sed s/#.*// $filename)
 elif [ $installCmd = "snap" ]; then
-  installCmd="$installCmd install"
+  sudo snap install $(sed s/#.*// $filename)
 elif [ $installCmd = "pacman" ]; then
-  installCmd="$installCmd -Syu"
+  sudo pacman -S $(sed s/#.*// $filename)
 elif [ $installCmd = "yay" ]; then
-  installCmd="$installCmd -Syu"
+  sudo yay -S $(sed s/#.*// $filename)
 else
   echo "$installCmd not supported"
   exit 2
 fi
-
-sudo "$installCmd" "$(sed s/#.*// $filename)"
