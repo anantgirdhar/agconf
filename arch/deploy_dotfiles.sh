@@ -28,6 +28,8 @@ link $DD/qutebrowser $C/qutebrowser
 link $DD/ranger $C/ranger
 link $DD/stnote $C/stnote
 link $DD/sxhkd $C/sxhkd
+link $DD/user-dirs.dirs $C/user-dirs.dirs
+link $DD/user-dirs.locale $C/user-dirs.locale
 link $DD/vim $C/vim
 link $DD/wgetrc $C/wgetrc
 link $DD/X11 $C/X11
