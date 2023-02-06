@@ -30,6 +30,7 @@ ifplugd
 
 # Media
 mpv
+pulseaudio-utils
 
 # Filesystem tools
 dosfstools  # for mkfs.vfat
