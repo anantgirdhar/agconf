@@ -8,7 +8,7 @@ ranger w3m  # w3m needed for image previews
 firefox
 zathura zathura-pdf-poppler zathura-ps zathura-djvu
 xournalpp
-qutebrowser #pdfjs wasn't in the repos
+qutebrowser libjs-pdf
 libreoffice
 pandoc
 zip unzip unrar
