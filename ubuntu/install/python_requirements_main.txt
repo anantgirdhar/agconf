@@ -3,6 +3,7 @@ ipywidgets
 #jupytext # convert between ipynb and py or md
 numpy
 matplotlib
+pyqt5
 scipy
 pillow  # to be able to save jpgs from matplotlib
 xarray
