@@ -30,6 +30,12 @@ jq
 sxiv
 gthumb  # quick image editing
 
+# AV
+ffmpeg
+audacity
+sox
+libsox-fmt-*
+
 # Misc
 xclip
 espeak
