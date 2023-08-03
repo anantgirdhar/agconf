@@ -35,3 +35,4 @@ pulseaudio-utils
 # Filesystem tools
 dosfstools  # for mkfs.vfat
 exfatprogs  # to mount exfat: mount -t exfat /dev/sdb1 mountpoint
+hfsprogs
