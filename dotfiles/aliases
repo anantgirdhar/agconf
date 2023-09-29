@@ -106,6 +106,7 @@ alias nbx='jupyter nbconvert --execute --to notebook --inplace'
 alias abook='abook --config $XDG_CONFIG_HOME/abook/abookrc'
 alias units='units --history $XDG_CACHE_HOME/units_history'
 alias py='source $XDG_DATA_HOME/virtualenv/py/bin/activate'
+alias ledger='ledger --init-file $XDG_CONFIG_HOME/ledger/ledgerrc'
 
 # Access external systems
 alias gryphon='ssh -Y gryphon'
