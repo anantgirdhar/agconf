@@ -27,6 +27,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'lervag/vimtex'
+Plug 'ledger/vim-ledger'
 call plug#end()
 
 source $HOME/.config/vim/config/plugin_settings/vim_markdown.vim
