@@ -21,7 +21,7 @@ PATH="$HOME/.local/bin:$PATH"
 export LESSHISTFILE=-
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 if uname -a | grep --quiet 'Ubuntu'; then
-  pass
+  :
 else
   export XRESOURCES_FILE="$XDG_CONFIG_HOME/X11/Xresources"
   export XAUTHORITY="$XDG_CONFIG_HOME/X11/.Xauthority"
@@ -65,7 +65,7 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 export LESS_TERMCAP_me=$(tput sgr0)
 
 if uname -a | grep --quiet 'Ubuntu'; then
-  pass
+  :
 else
   [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x awesome >/dev/null && exec startx "$XINITRC"
   [ "$(tty)" = "/dev/tty2" ] && ! pgrep -x dwm >/dev/null && exec startx "$XINITRC"
