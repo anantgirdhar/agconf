@@ -167,7 +167,7 @@ awful.screen.connect_for_each_screen(function(s)
       mykeyboardlayout,
       wibox.widget.systray(),
       awful.widget.watch('weather', 3600),
-      awful.widget.watch('stockprice', 2),
+      awful.widget.watch('stockprice', 10),
       awful.widget.watch('volume', 1),
       awful.widget.watch('battery', 10),
       mytextclock,
