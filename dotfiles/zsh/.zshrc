@@ -105,6 +105,6 @@ zle -N edit-command-line
 bindkey '^v' edit-command-line
 
 # Load syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # Suggest aliases for commands
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
