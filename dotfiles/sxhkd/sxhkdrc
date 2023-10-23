@@ -5,8 +5,8 @@ super + p
 	$TERMINAL -e htop
 super + w
 	$BROWSER
-super + shift + w ; {q,f,b,l,o}
-	{qutebrowser,firefox,brave,librewolf,open_quick_link}
+super + shift + w ; {q,f,b,l,c,o}
+	{qutebrowser,firefox,brave,librewolf,chromium,open_quick_link}
 super + c
 	$TERMINAL -e calcurse
 
