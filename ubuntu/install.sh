@@ -10,4 +10,4 @@
 
 ./install/setup_python.sh
 
-./install/install_librewolf.sh
+./install/install_ungoogled_chromium.sh
