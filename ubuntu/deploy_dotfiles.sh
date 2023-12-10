@@ -26,6 +26,6 @@ link $DD/sxhkd $C/sxhkd
 link $DD/user-dirs.dirs $C/user-dirs.dirs
 link $DD/user-dirs.locale $C/user-dirs.locale
 link $DD/vim $C/vim
-link $DD/wgetrc $C/.wgetrc
+link $DD/wgetrc $C/wgetrc
 link $DD/zathura $C/zathura
 link $DD/zsh $C/zsh
