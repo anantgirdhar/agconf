@@ -25,6 +25,7 @@ alias pacman='pacman --color=auto'
 alias diff='diff --color=auto'
 alias w='watch --interval=1 -d'
 alias lsblk='lsblk -e 7'  # ignore loop devices
+alias sxiv='nsxiv'
 
 # System config files
 alias val='vim $ALIASES_FILE'
