@@ -2,6 +2,7 @@
 git
 vim-gui-common  # to enable copy-pasting to system clipboard
 imagemagick
+libimage-exiftool-perl
 ranger w3m  # w3m needed for image previews
 #lf -- check
 #ueberzug  # image previews with ranger
@@ -20,7 +21,6 @@ entr  # automate tasks when files update
 calcurse
 abook
 bc
-#perl-image-exiftool
 odt2txt
 pinta
 jq
@@ -28,7 +28,7 @@ screen
 
 # Image
 #eog
-sxiv
+nsxiv
 gthumb  # quick image editing
 
 # AV
