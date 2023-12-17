@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# Called by nsxiv(1) after the external prefix key (C-x by default) is pressed.
+# The next key combo is passed as its first argument. Passed via stdin are the
+# images to act upon: all marked images, if in thumbnail mode and at least one
+# image has been marked, otherwise the current image. nsxiv(1) will block until
+# the handler terminates. It then checks which images have been modified and
+# reloads them.
+
+# By default nsxiv(1) will send one image per-line to stdin, however when using
+# -0 the image list will be NULL separated and the environment variable
+# "$NSXIV_USING_NULL" will be set to 1.
+
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+# where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
+# keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
+# If KEY has an uppercase equivalent, S-KEY is resolved into it. For instance,
+# K replaces S-k and Scedilla replaces S-scedilla, but S-Delete is sent as-is.
+
+confirm() {
+  message="$1"
+  response=$(printf "no\nyes" | dmenu -c -i -l 2 -p "$message" | tr "[:upper:]" "[:lower:]")
+  [ "$response" = "yes" ] && return 0 || return 1
+}
+
+findRaw() {
+  filepath="$1"
+  extension="$2"
+  filename=$(basename "$filepath")
+  dir=$(dirname "$filepath")
+  rawFilepath="$dir/${filename%.*}.$extension"
+  if [ ! -f "$rawFilepath" ]; then
+    rawFilepath="$dir/../raw/${filename%.*}.$extension"
+  fi
+  echo "$rawFilepath"
+}
+
+case "$1" in
+  "d")
+    while read file; do
+      echo
+      rawFilepath="$(findRaw "$file" "NEF")"
+      if [ -f "$rawFilepath" ]; then
+        if confirm "Do you want to delete the corresponding RAW image as well?"; then
+          rm "$rawFilepath"
+        fi
+      fi
+      rm "$file"
+    done
+    ;;
+  "r") while read file; do convert "$file" -rotate 90 "$file"; done ;;
+  "R") while read file; do convert "$file" -rotate -90 "$file"; done ;;
+  "Y") xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+  "y") while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
+esac
