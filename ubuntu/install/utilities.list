@@ -19,6 +19,8 @@ ripgrep
 maim  # For screenshots
 entr  # automate tasks when files update
 calcurse
+vdirsyncer
+khal
 abook
 bc
 odt2txt
