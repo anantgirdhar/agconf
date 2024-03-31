@@ -9,6 +9,8 @@ super + shift + w ; {q,f,b,l,c,o}
 	{qutebrowser,firefox,brave,librewolf,chromium,open_quick_link}
 super + c
 	$TERMINAL -e calcurse
+super + shift + p
+	$AGSCRIPTS/pass_menu --type
 
 # utilities
 super + {_,shift + } F2
