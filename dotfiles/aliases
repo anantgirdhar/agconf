@@ -133,4 +133,3 @@ alias pacef='ssh -X pacef'
 alias kshell='/usr/local/krb5/bin/kshell'
 alias kinit='/usr/local/krb5/bin/kinit -f -V -A anantg@ORS.HPC.MIL'
 alias copper='ssh -Y anantg@copper01.ORS.HPC.MIL'
-
