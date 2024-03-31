@@ -18,7 +18,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dyng/ctrlsf.vim'
 "Plug 'vim-syntastic/syntastic'
-" Plug 'dense-analysis/ale', {'for': 'python'}
+Plug 'dense-analysis/ale', {'for': 'python'}
 Plug 'ap/vim-css-color'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'plasticboy/vim-markdown'
@@ -32,3 +32,9 @@ call plug#end()
 
 source $HOME/.config/vim/config/plugin_settings/vim_markdown.vim
 source $HOME/.config/vim/config/plugin_settings/vimtex.vim
+
+let g:ale_linters = {'python': ['mypy', 'pylsp']}
+let g:ale_fixers = {'python': ['black', 'autoimport', 'isort']}
+let g:ale_fix_on_save = 1
+let g:ale_python_black_options='--line-length=79'
+let g:ale_python_mypy_options='--strict'

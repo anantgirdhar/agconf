@@ -55,3 +55,9 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <localleader>n :set number!<CR>
 nnoremap <localleader>r :set relativenumber!<CR>
 nnoremap <C-b> :TableModeToggle<CR>
+
+" ALE/LSP mappings
+nnoremap <leader>a <Plug>(ale_toggle)
+nnoremap <silent> <leader>g <Plug>(ale_go_to_definition)
+nnoremap <silent> <leader>p <Plug>(ale_previous_wrap)
+nnoremap <silent> <leader>n <Plug>(ale_next_wrap)
