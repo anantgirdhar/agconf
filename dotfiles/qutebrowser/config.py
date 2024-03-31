@@ -234,7 +234,7 @@ c.tabs.select_on_remove = 'prev'
 c.url.searchengines = {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     'w': 'https://en.wikipedia.org/w/index.php?search={}',
-    'th': 'https://www.thesaurus.com/browse/{}',
+    'th': 'https://www.merriam-webster.com/thesaurus/{}',
     'ly': 'https://genius.com/search?q={}',
     'rmg': 'http://reactionmechanismgenerator.github.io/RMG-Py/search.html?q={}',
     'def': 'https://www.merriam-webster.com/dictionary/{}',
