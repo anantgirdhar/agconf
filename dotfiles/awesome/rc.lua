@@ -419,7 +419,7 @@ awful.rules.rules = {
     rule_any = {
       class = {
         "firefox" ,
-        "Brave-browser",
+        "Brave",
         "librewolf-default",
         "Chromium"
       }
