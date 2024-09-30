@@ -5,6 +5,7 @@ feh
 x11-xserver-utils arandr
 neofetch
 sxhkd
+i3lock
 
 # Fonts
 fonts-linuxlibertine fonts-inconsolata
