@@ -13,6 +13,7 @@ link $DD/awesome $C/awesome
 link $DD/bash/bashrc $HOME/.bashrc
 link $DD/calcurse $C/calcurse
 link $DD/clarence $C/clarence
+link $DD/ledger $C/ledger
 link $DD/lf $C/lf
 link $DD/localutils $C/localutils
 link $DD/mpv $C/mpv
