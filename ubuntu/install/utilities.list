@@ -28,6 +28,8 @@ odt2txt
 jq
 screen
 tldr
+pass
+xdotool
 
 # Image
 #eog
