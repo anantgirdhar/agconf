@@ -19,3 +19,9 @@ flake8-docstrings
 flake8-rst-docstrings
 flake8-import-order
 torch
+# LSP stuff
+python-lsp-server
+mypy
+black
+autoimport
+isort
