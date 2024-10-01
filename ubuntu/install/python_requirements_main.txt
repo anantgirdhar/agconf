@@ -25,3 +25,6 @@ mypy
 black
 autoimport
 isort
+# PDF stuff
+pypdf2
+reportlab
