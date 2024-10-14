@@ -95,8 +95,8 @@ ccat() {
 }
 
 # Softwares
-alias v='vim'
-alias vi='vim'
+alias v='nvim'
+alias vi='nvim'
 alias visit='/usr/local/visit/bin/visit &'
 alias tec='/usr/local/tecplot/360ex_2017r2/bin/tec360 &'
 alias tecb='/usr/local/tecplot/360ex_2017r2/bin/tec360 -b -p'
