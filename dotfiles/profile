@@ -42,6 +42,11 @@ export GOPATH="$XDG_DATA_HOME/go"
 export TERM=xterm  # To fix E437 on PACE
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
+# Make rust respect XDG
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
+
 # Set default programs
 export EDITOR="nvim"
 export TERMINAL="st"
