@@ -10,3 +10,6 @@ virtualenv $HOME/.local/share/virtualenv/py
 . $HOME/.local/share/virtualenv/py/bin/activate
 pip install -r ./install/python_requirements_main.txt
 deactivate
+
+sudo apt install pipx
+pipx install ruff
