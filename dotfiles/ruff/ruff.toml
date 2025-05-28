@@ -31,4 +31,8 @@ select = [
     "W5",   # doc line length
     "F",    # pyflakes
     ]
+ignore = [
+    "SIM108",  # don't enforce ternary operator instead of if-else block
+    "PD901",   # allow generic name df for a pandas DataFrame
+    ]
 task-tags = ["TODO", "FIXME", "XXX"]
