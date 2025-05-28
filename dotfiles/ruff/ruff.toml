@@ -5,7 +5,7 @@ respect-gitignore = true
 [format]
 docstring-code-format = true
 indent-style = "space"
-quote-style = "single"
+quote-style = "double"
 skip-magic-trailing-comma = false
 
 [lint]
