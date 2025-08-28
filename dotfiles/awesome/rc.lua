@@ -279,6 +279,28 @@ globalkeys = gears.table.join(
     {description = "run / program launcher", group = "launcher"})
 )
 
+-- {{{ Move to screen with wrap-around based on x position
+local function move_screens(client, direction)
+  local list = {}
+  for s in screen do table.insert(list, s) end
+  table.sort(list, function(a, b) return a.geometry.x < b.geometry.x end)
+
+  local focused = client.screen
+  local idx
+  for i, s in ipairs(list) do
+    if s == focused then idx = i; break end
+  end
+
+  if direction > 0 then
+    idx = (idx % #list) + 1  -- wrap right
+  else
+    idx = ((idx - 2) % #list) + 1  -- wrap left
+  end
+
+  client:move_to_screen(list[idx].index)
+end
+-- }}}
+
 clientkeys = gears.table.join(
   awful.key({ modkey, }, "f",
     function (c)
@@ -292,9 +314,13 @@ clientkeys = gears.table.join(
     {description = "toggle floating", group = "client"}),
   awful.key({ modkey, "Shift" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
     {description = "move to master", group = "client"}),
-  awful.key({ modkey, "Shift" }, "h", function (c) c:move_to_screen(c.screen.index-1) end,
+  -- awful.key({ modkey, "Shift" }, "h", function (c) c:move_to_screen(c.screen.index-1) end,
+  --   {description = "move to previous screen", group = "client"}),
+  -- awful.key({ modkey, "Shift" }, "l", function (c) c:move_to_screen(c.screen.index+1) end,
+  --   {description = "move to next screen", group = "client"}),
+  awful.key({ modkey, "Shift" }, "h", function (c) move_screens(c, -1) end,
     {description = "move to previous screen", group = "client"}),
-  awful.key({ modkey, "Shift" }, "l", function (c) c:move_to_screen(c.screen.index+1) end,
+  awful.key({ modkey, "Shift" }, "l", function (c) move_screens(c,  1) end,
     {description = "move to next screen", group = "client"}),
   awful.key({ modkey, "Shift" }, "t", function (c) c.ontop = not c.ontop end,
     {description = "toggle keep on top", group = "client"}),
