@@ -184,6 +184,28 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+-- {{{ Cycle screen with wrap-around based on x position
+local function cycle_screen(direction)
+  local list = {}
+  for s in screen do table.insert(list, s) end
+  table.sort(list, function(a, b) return a.geometry.x < b.geometry.x end)
+
+  local focused = awful.screen.focused()
+  local idx
+  for i, s in ipairs(list) do
+    if s == focused then idx = i; break end
+  end
+
+  if direction > 0 then
+    idx = (idx % #list) + 1  -- wrap right
+  else
+    idx = ((idx - 2) % #list) + 1  -- wrap left
+  end
+
+  awful.screen.focus(list[idx])
+end
+-- }}}
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
   -- Awesome manipulation
@@ -214,10 +236,14 @@ globalkeys = gears.table.join(
 
   -- Layout manipulation
   --TODO: What do these do??
-  awful.key({ modkey, }, "h", function () awful.screen.focus_relative(-1) end,
-    {description = "focus the previous screen", group = "screen"}),
-  awful.key({ modkey, }, "l", function () awful.screen.focus_relative( 1) end,
-    {description = "focus the next screen", group = "screen"}),
+  -- awful.key({ modkey, }, "h", function () awful.screen.focus_relative(-1) end,
+  --   {description = "focus the previous screen", group = "screen"}),
+  -- awful.key({ modkey, }, "l", function () awful.screen.focus_relative( 1) end,
+  --   {description = "focus the next screen", group = "screen"}),
+  awful.key({ modkey, }, "h", function () cycle_screen(-1) end,
+    {description = "cycle screen left", group = "screen"}),
+  awful.key({ modkey, }, "l", function () cycle_screen(1) end,
+    {description = "cycle screen right", group = "screen"}),
   awful.key({ modkey, }, "Tab",
     function ()
       awful.tag.history.restore(awful.screen.focused())
