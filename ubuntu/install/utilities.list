@@ -12,7 +12,7 @@ xournalpp
 qutebrowser libjs-pdf
 libreoffice
 pandoc
-zip unzip unrar
+zip unzip unrar p7zip-full
 rsync
 fzf
 ripgrep
